@@ -95,5 +95,10 @@ int sys_shutdown(void) {
     return 0;
 }
 
+int sys_reboot(void) {
+    outw(0x604, 0x00FE);
+    return 0;
+}
+
 
 
