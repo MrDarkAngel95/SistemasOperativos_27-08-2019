@@ -132,6 +132,7 @@ static int (*syscalls[])(void) = {
 [SYS_reboot] sys_reboot
 };
 
+/*
 static char * syscallName[] = {
 [SYS_fork]      "sys_fork",
 [SYS_exit]      "sys_exit",
@@ -157,15 +158,15 @@ static char * syscallName[] = {
 [SYS_shutdown]  "sys_shutdown",
 [SYS_reboot]    "sys_reboot"
 };
+*/
 
-void
-syscall(void)
+void syscall(void)
 {
   int num;
   struct proc *curproc = myproc();
 
   num = curproc->tf->eax;
-  cprintf("%s -> %d \n", syscallName[num], num);
+  //cprintf("%s -> %d \n", syscallName[num], num);
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     curproc->tf->eax = syscalls[num]();
   } else {
