@@ -100,5 +100,14 @@ int sys_reboot(void) {
     return 0;
 }
 
+int sys_sleepSO(void) {
+
+    int time;
+
+    if(argint(0, &time) < 0)
+        return -1;
+    for(int i = 0; i<=time*100; i++);
+    return 0;
+}
 
 
